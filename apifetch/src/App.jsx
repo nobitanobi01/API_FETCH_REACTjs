@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [products, setProduct] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     getData();
   }, [])
 
@@ -14,12 +15,16 @@ function App() {
     response = await response.json();
     console.log(response);
     setProduct(response.products);
+    setLoading(false);
+
   }
   return (
     <>
-      <h1 style={{textAlign:"center"}}>Fetching Data from Url</h1>
-      <table border="1" cellpadding="10" style={{borderCollapse:"collapse",width:"80%",margin:"auto"}}>
-        <thead style={{backgroundColor:"green"}} >
+      <h1 style={{ textAlign: "center" }}>Fetching Data from Url</h1>
+      {!loading ?
+
+      <table border="1" cellpadding="10" style={{ borderCollapse: "collapse", width: "80%", margin: "auto" }}>
+        <thead style={{ backgroundColor: "black", color:"white" }} >
           <tr>
             <th>Title</th>
             <th>Description</th>
@@ -28,19 +33,24 @@ function App() {
             <th>Rating</th>
           </tr>
         </thead>
-        <tbody style={{backgroundColor:"skyblue"}}>
+        <tbody style={{ backgroundColor: "grey" }}>
           {
-          products.map((item,index)=>(
-            <tr key={index}>
-              <td>{item.title}</td>
-              <td>{item.description}</td>
-              <td>{item.category}</td>
-              <td>{item.price}</td>
-              <td>{item.rating}</td>
-            </tr>
-          ))}
+            
+              products.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.title}</td>
+                  <td>{item.description}</td>
+                  <td>{item.category}</td>
+                  <td>{item.price}</td>
+                  <td>{item.rating}</td>
+                </tr>
+              ))
+            
+          }
         </tbody>
       </table>
+      : <h1 style={{textAlign:"center", color:"orange", margin:"auto"}}> Loading Data....</h1>
+}
     </>
   )
 }
