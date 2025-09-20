@@ -17,9 +17,9 @@ function App() {
   }
   return (
     <>
-      <h1>Fetching Data from Url</h1>
+      <h1 style={{textAlign:"center"}}>Fetching Data from Url</h1>
       <table border="1" cellpadding="10" style={{borderCollapse:"collapse",width:"80%",margin:"auto"}}>
-        <thead >
+        <thead style={{backgroundColor:"green"}} >
           <tr>
             <th>Title</th>
             <th>Description</th>
@@ -28,7 +28,7 @@ function App() {
             <th>Rating</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style={{backgroundColor:"skyblue"}}>
           {
           products.map((item,index)=>(
             <tr key={index}>
