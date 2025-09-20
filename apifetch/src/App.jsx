@@ -23,7 +23,7 @@ function App() {
       <h1 style={{ textAlign: "center" }}>Fetching Data from Url</h1>
       {!loading ?
 
-      <table border="1" cellpadding="10" style={{ borderCollapse: "collapse", width: "80%", margin: "auto" }}>
+      <table border="1px " cellpadding="10" style={{ borderCollapse: "collapse", width: "80%", margin: "auto" }}>
         <thead style={{ backgroundColor: "black", color:"white" }} >
           <tr>
             <th>Title</th>
@@ -37,8 +37,8 @@ function App() {
           {
             
               products.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.title}</td>
+                <tr key={index}style={{border:"1px solid black"}}>
+                  <td >{item.title}</td>
                   <td>{item.description}</td>
                   <td>{item.category}</td>
                   <td>{item.price}</td>
